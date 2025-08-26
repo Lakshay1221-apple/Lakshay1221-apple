@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&color=FF33CC&center=true&vCenter=true&lines=CSE+Student+%7C+AI%2FML+Learner;Full-Stack+Dev+in+Progress;Love+to+Build+%26+Learn" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF33CC&center=true&vCenter=true&width=600&lines=CSE+Student+%7C+AI%2FML+Learner;Full-Stack+Dev+in+Progress;Love+to+Build+%26+Learn" />
 </p>
 
 <p align="center">
@@ -36,8 +36,8 @@
 
 <p align="center">
   <a href="https://github.com/yourusername"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
-  <a href="https://linkedin.com/in/yourusername"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="https://twitter.com/yourusername"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"/></a>
+  <a href="http://www.linkedin.com/in/lakshay-raj-b53709303"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="https://x.com/Lakshay268756?t=2syUSghpPpgjghofK-7DiQ&s=09"><img src="https://img.shields.io/badge/X-1DA1F2?style=for-the-badge&logo=x&logoColor=white"/></a>
 </p>
 
 <p align="center">
@@ -45,20 +45,8 @@
 </p>
 
 <p align="center">
-  <img src="https://c.tenor.com/W4H0j72CexAAAAAd/coding-programmer.gif" width="400" />
+  <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" width="400" />
 </p>
-
-<p align="center">
-  🔹 Featured Projects:
-</p>
-
-<p align="center">
-  🔹 <b>Portfolio Website</b> - Personal showcase with React and Tailwind CSS<br>
-  🔹 <b>AI/ML Project</b> - Python-based machine learning project<br>
-  🔹 <b>Full-Stack App</b> - Node.js + React + MongoDB application
-</p>
-
-
 
 
 
