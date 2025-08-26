@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=24&color=FF33CC&center=true&vCenter=true&lines=CSE+Student+%7C+AI%2FML+Learner;Full-Stack+Dev+in+Progress;Love+to+Build+%26+Learn" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&color=FF33CC&center=true&vCenter=true&lines=CSE+Student+%7C+AI%2FML+Learner;Full-Stack+Dev+in+Progress;Love+to+Build+%26+Learn" />
 </p>
 
 <p align="center">
@@ -41,11 +41,11 @@
 </p>
 
 <p align="center">
-  📊 GitHub Stats:
+  🎬 Coding in Action:
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=radical" />
+  <img src="https://c.tenor.com/W4H0j72CexAAAAAd/coding-programmer.gif" width="400" />
 </p>
 
 <p align="center">
@@ -57,6 +57,7 @@
   🔹 <b>AI/ML Project</b> - Python-based machine learning project<br>
   🔹 <b>Full-Stack App</b> - Node.js + React + MongoDB application
 </p>
+
 
 
 
