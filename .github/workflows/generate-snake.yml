@@ -1,0 +1,29 @@
+name: Generate Snake
+
+on:
+  schedule:
+    - cron: "0 */8 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: Platane/snk@v3
+        with:
+          github_user_name: Lakshay1221-apple
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+          
+      - name: Push Snake
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: output
+          keep_history: true
+          commit_message: "Generated Snake"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
