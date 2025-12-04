@@ -25,7 +25,6 @@
   <img src="https://komarev.com/ghpvc/?username=Lakshay1221-apple&label=Profile%20Views&color=blueviolet&style=for-the-badge" />
 </p>
 
-
 ---
 
 # 🏆 GitHub Trophies  
@@ -42,30 +41,21 @@
 # ⚙️ Skills & Tools  
 <div align="center">
 
-<!-- PROGRAMMING LANGUAGES -->
 <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" height="27" />
 <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" height="27">
 <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" height="27">
 <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" height="27">
-
-<!-- WEB DEV -->
 <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black" height="27">
 <img src="https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white" height="27">
-
-<!-- BACKEND -->
 <img src="https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" height="27">
-
-<!-- DATABASE -->
 <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" height="27">
-
-<!-- TOOLS -->
 <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" height="27">
@@ -78,46 +68,27 @@
 
 <div align="center">
 
-<table>
-<tr>
-<td>
 <img src="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&theme=dracula" width="450"/>
-</td>
-<td>
+
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Lakshay1221-apple&show_icons=true&theme=dracula&layout=compact" width="400"/>
-</td>
-</tr>
-</table>
 
-<table>
-<tr>
-<td>
 <img src="https://github-readme-stats.vercel.app/api?username=Lakshay1221-apple&show_icons=true&theme=dracula" width="450"/>
-</td>
-<td>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple&theme=dracula" width="450"/>
-</td>
-</tr>
-</table>
 
-<table>
-<tr>
-<td>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple&theme=dracula" width="450"/>
+
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=Lakshay1221-apple&theme=react-dark&hide_border=true&area=true" width="95%"/>
-</td>
-</tr>
-</table>
 
 </div>
 
 ---
 
-# 🐍 Snake Graph  
+# 🐍 Snake Eating My Contributions
+
 <div align="center">
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" />
-<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
-<img src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
 </picture>
 </div>
 
@@ -130,8 +101,8 @@
 - 💼 Full Stack Developer (in progress)  
 - 🤖 AI/ML Explorer  
 - 📧 Email: **lakshaywork012@gmail.com**  
-- 🚀 Passionate about creating real-world impactful projects  
-- 🔥 Always learning & building  
+- 🚀 Building real-world impactful projects  
+- 🔥 Always learning & leveling up  
 
 ---
 
