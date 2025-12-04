@@ -5,25 +5,30 @@ on:
     - cron: "0 */8 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: actions/checkout@v4
-      
-      - uses: Platane/snk@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate Snake SVG
+        uses: Platane/snk@v3
+        id: snake
         with:
           github_user_name: Lakshay1221-apple
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-          
-      - name: Push Snake
-        uses: crazy-max/ghaction-github-pages@v3
+
+      - name: Push Snake to output branch
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          target_branch: output
-          keep_history: true
-          commit_message: "Generated Snake"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: output
+          force_orphan: true
