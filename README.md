@@ -3,8 +3,33 @@
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:6A5ACD,100:00BFFF&height=180&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=45&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=70" />
 </p>
 
+<!-- 🎮 MARIO + OGGY ANIMATION SECTION -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/mario/mario-running.gif" width="200" alt="Mario running animation" />
+
+  <!-- Mario Running (Bigger) -->
+  <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" 
+       width="280" alt="Mario Running" />
+
+  <!-- Mario Jumping -->
+  <img src="https://media.tenor.com/uE4nHCqB6d0AAAAi/mario-jump.gif" 
+       width="150" alt="Mario Jumping" />
+
+  <!-- Fire Mario -->
+  <img src="https://media.tenor.com/5vHwvf_z5SAAAAAi/mario-fireball.gif" 
+       width="170" alt="Fire Mario" />
+
+  <!-- Pixel Mario -->
+  <img src="https://media.tenor.com/_gS-MG89_2wAAAAi/pixel-mario.gif" 
+       width="170" alt="Pixel Mario" />
+
+</p>
+
+<br/>
+
+<!-- 🏃‍♂️ OGGY RUNNING (Working GIF Link) -->
+<p align="center">
+  <img src="https://i.pinimg.com/originals/69/42/8c/69428c73b1a8f18950ea25eb289adfd8.gif" 
+       width="350" alt="Oggy Running" />
 </p>
 
 
@@ -70,7 +95,6 @@
 ---
 
 # 📊 GitHub Stats  
-
 <div align="center">
 
 <img src="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&theme=dracula" width="450"/>
@@ -88,7 +112,6 @@
 ---
 
 # 🐍 Snake Eating My Contributions
-
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" />
