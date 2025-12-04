@@ -3,6 +3,11 @@
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:6A5ACD,100:00BFFF&height=180&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=45&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=70" />
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/mario/mario-running.gif" width="200" alt="Mario running animation" />
+</p>
+
+
 <!-- CONTACT BADGES -->
 <p align="center">
 <a href="mailto:lakshaywork012@gmail.com"><img align="center" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
