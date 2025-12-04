@@ -1,65 +1,140 @@
+<!--  NEW HEADER BANNER -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:32CD32,100:2E2EFF&height=200&section=header&text=$whoami&fontSize=80&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&descAlignY=60&descAlign=50" alt="whoami"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:6A5ACD,100:00BFFF&height=180&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=45&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=70" />
 </p>
 
-<!--   my-icons -->
+<!-- CONTACT BADGES -->
 <p align="center">
-<a href="mailto:anshkumar1399@gmail.com"><img align="center" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<a href="https://twitter.com/anshkumar2311" target="blank"><img align="center" src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" alt="anshkumar2311" height="27" /></a>
-<a href="https://linkedin.com/in/ansh-kumar-747009311" target="blank"><img align="center" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="ansh-kumar-747009311" height="27" /></a>
-<a href="https://stackoverflow.com/users/28400555" target="blank"><img align="center" src="https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white" height="27" /></a>
-<a href="https://instagram.com/_a_n_s_hh___" target="blank"><img align="center" src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white" alt="_a_n_s_hh___" height="27" /></a>
-<a href="https://discord.com/users/anshkumar2311" target="blank"><img align="center" src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" height="27" /></a>
-<a href="https://auth.geeksforgeeks.org/user/anshkumar2311" target="blank"><img align="center" src="https://img.shields.io/badge/GeeksforGeeks-gray?style=for-the-badge&logo=geeksforgeeks&logoColor=35914c" alt="anshkumar2311" height="27" /></a>
+<a href="mailto:lakshaywork012@gmail.com"><img align="center" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+<a href="https://twitter.com" target="blank"><img align="center" src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" height="27" /></a>
+<a href="https://linkedin.com/in" target="blank"><img align="center" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" height="27" /></a>
+<a href="https://instagram.com" target="blank"><img align="center" src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white" height="27" /></a>
 </p>
 
-[![MasterHead](https://github.com/BEPb/BEPb/blob/main/src/header_.png)](https://github.com/Lakshay1221-apple)
+<!-- TYPING HEADING -->
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=40&center=true&vCenter=true&width=550&height=70&duration=4000&lines=Hi+There!+👋;I'm+Lakshay+Raj" />
+</p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+there+👋;+I'm+Lakshay+Raj+!" alt="HELLO SECTION">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3500&pause=500&color=00BFFF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Full+Stack+Developer+in+Progress🚀;AI+%26+ML+Enthusiast+⚡" />
 </p>
+
+<!-- PROFILE VIEWS -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=4000&pause=500&color=F72585&background=00000000&center=true&vCenter=true&width=500&lines=Welcome+to+my+GitHub+profile!+🚀" alt="Typing SVG">
+  <img src="https://komarev.com/ghpvc/?username=Lakshay1221-apple&label=Profile%20Views&color=blueviolet&style=for-the-badge" />
 </p>
-<p align="center"> <img src="https://komarev.com/ghpvc/?username=Lakshay1221-apple&label=Profile%20views&color=0e75b6&style=flat" alt="Lakshay1221-apple" height="30" width="180px"/> </p>
 
-### 🏆 GitHub Trophies
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100vw">
 
-<a href="https://github-trophies.vercel.app/?username=Lakshay1221-apple" target="_blank">
-  <img src="https://github-trophies.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=MultiLanguage,Organizations,Commits,Stars,PullRequest,Repositories,Followers,Issues&row=1&column=8">
-</a>
+---
 
-  [![trophy](https://github-profile-trophy.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=Experience,Review)](https://github-profile-trophy.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=Experience,Review)
+# 🏆 GitHub Trophies  
+<p align="center">
+<img src="https://github-trophies.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=MultiLanguage,Organizations,Commits,Stars,PullRequest,Repositories,Followers,Issues&row=1&column=8">
+</p>
 
-<br>
+<p align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=Experience,Review">
+</p>
 
-<img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" width="20"> Skills and Tools:
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100vw"><div align="center"> <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" height="27" /> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" alt="C" height="27"> <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++" height="27"> <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML" height="27"> <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" height="27"> <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" height="27"> <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" height="27"> <img src="https://img.shields.io/badge/bash-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash" height="27"> <img src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white" alt="lua" height="27"> <img src="https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white" alt="markdown" height="28"> <img src="https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" height="27"> <img src="https://img.shields.io/badge/Anaconda-%2344A833.svg?style=for-the-badge&logo=anaconda&logoColor=white" alt="anaconda" height="27"> <img src="https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white" alt="bun" height="27"> <img src="https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" height="27"> <img src="https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white" alt="npm" height="27"> <img src="https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD" alt="nodemon" height="27"> <img src="https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white" alt="yarn" height="27"> <img src="https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220" alt="pnpm" height="27"> <img src="https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" height="27"> <img src="https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" height="28"> <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="Express.js" height="28"> <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" height="27"> <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" height="27"> <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="postgreSQL" height="27"> <img src="https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34" alt="firebase" height="27"> <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="mariadb" height="27"> <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git" height="27"> <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" height="27"> <img src="https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&logo=gitkraken&logoColor=white" height="27" alt="gitKraken"> <img src="https://img.shields.io/badge/-Warp-7E5BEF?style=for-the-badge&logo=warp&logoColor=white" alt="Warp" height="27"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" height="27"> <img src="https://img.shields.io/badge/-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify" height="27"> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" height="27"> <img src="https://img.shields.io/badge/-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" height="28"> <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white" alt="canva" height="28"> <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="figma" height="28"> <img src="https://img.shields.io/badge/pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" height="40"> <img src="https://img.shields.io/badge/streamlit-FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" height="40"> <img src="https://img.shields.io/badge/ngrok-1F1F1F.svg?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Ngrok" height="40"> <img src="https://img.shields.io/badge/matplotlib-11557C.svg?style=for-the-badge&logo=plotly&logoColor=white" alt="Matplotlib" height="40"> <img src="https://img.shields.io/badge/huggingface-FFD21F.svg?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face" height="40"> <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama" height="27"> <img src="https://img.shields.io/badge/Langflow-4B0082.svg?style=for-the-badge&logoColor=white" height="27"> <img src="https://img.shields.io/badge/Render-000000?style=for-the-badge&logo=render&logoColor=white" alt="Render" height="27"> <img src="https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white" height="27"alt="jupyter"> <img src="https://img.shields.io/badge/Google%20Colab-%23F9A825.svg?style=for-the-badge&logo=googlecolab&logoColor=white" height="27"alt="gc"> <img src="https://img.shields.io/badge/kaggle-000000.svg?style=for-the-badge&logo=kaggle&logoColor=white" alt="kaggle" height="28"> <img src="https://img.shields.io/badge/VS%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="Visual Studio Code" height="27"> <img src="https://img.shields.io/badge/zed-084CCF.svg?style=for-the-badge&logo=zedindustries&logoColor=white" height="27" alt="Zed"> <img src="https://img.shields.io/badge/Replit-DD1200?style=for-the-badge&logo=Replit&logoColor=white" height="27"alt="replit"> <img src="https://img.shields.io/badge/Sublime_Text-%23FF9800.svg?&style=for-the-badge&logo=sublime-text&logoColor=white" height="27" alt="Sublime Text"> <img src="https://img.shields.io/badge/-Cursor-3C74FF?style=for-the-badge&logo=cursor&logoColor=white" height="27"alt="Cursor"> <img src="https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white" height="27"alt="Neovim"> <img src="https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white" alt="Windows 11" height="27"> <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt=" Linux" height="27"> <img src="https://img.shields.io/badge/Arch%20Linux-1793D1.svg?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" height="27"> <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="ubuntu-server" height="27"> <img src="https://img.shields.io/badge/Garuda-8E44AD?style=for-the-badge&logo=garuda-linux&logoColor=white" alt="Garuda Linux" height="27"> <img src="https://img.shields.io/badge/Pop!_OS-48B9C7?style=for-the-badge&logo=Pop!_OS&logoColor=white" height="27" alt="Pop"> <img src="https://img.shields.io/badge/Kali-268BEE?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Kali Linux" height="27"> </div> <br>
-<img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="20"> GitHub Stats
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-https://wakatime.com/badge/user/9506c64b-0ba9-414f-a1af-809e23aeb4c4.svg
+---
 
-<div align="center"> <table> <tbody> <tr> <th> <a href="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5&order=3&card_height=235"> <img src="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&locale=en&mode=daily&theme=dracula&hide_border=false&border_radius=5&order=3&card_height=190&card_width=450"/> </a> </th> <th> <a href="https://github-readme-stats.vercel.app/api/top-langs?username=Lakshay1221-apple&show_icons=true&locale=en&langs_count=12&theme=dracula&layout=compact&card_width=380&card_height=400"> <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Lakshay1221-apple&show_icons=true&locale=en&langs_count=12&theme=dracula&layout=compact&card_width=380&card_height=400"/> </a> </th> </tr> </tbody> </table><table> <tbody> <tr> <th> <a href="https://github-readme-stats.vercel.app/api?username=Lakshay1221-apple&show_icons=true&locale=en&"> <img src="https://github-readme-stats.vercel.app/api?username=Lakshay1221-apple&show_icons=true&locale=en&theme=dracula"/> </a> </th> <th> <a href="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple"> <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple&theme=dracula"/> </a> </th> </tr> </tbody> </table> <table> <tbody> <tr> <th> <a href="https://github-readme-stats.vercel.app/api/wakatime?username=Lakshay1221-apple&layout=compact&theme=dracula&langs_count=12"> <img src="https://github-readme-stats.vercel.app/api/wakatime?username=Lakshay1221-apple&layout=compact&theme=dracula&langs_count=12&card_height=480&card_width=450"/> </a> </th> <th> <a href="https://github-contributor-stats.vercel.app/api?username=Lakshay1221-apple&limit=5&theme=dracula&combine_all_yearly_contributions=true"> <img src="https://github-contributor-stats.vercel.app/api?username=Lakshay1221-apple&limit=5&theme=dracula&combine_all_yearly_contributions=true"/> </a> </th> </tr> </tbody> </table> </div><img src="https://github-readme-activity-graph.vercel.app/graph?username=Lakshay1221-apple&theme=react-dark&hide_border=true&area=true" width="95%" alt="Contribution Graph">
-📈 3d-Contribution Graph:
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100vw"> <div align="center"> <img src="/profile-3d-contrib/profile-night-rainbow.svg" alt="Metrics" width="100%"> </div> <br>
-🐍 Snake-Eating Contribution Graph:
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"> <div align="center"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" /> <img alt="github-snake" src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" /> </picture> </div><div align="center"> <br>
-https://count.getloli.com/get/@Lakshay1221-apple.github.readme
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" width="100%"/>
+# ⚙️ Skills & Tools  
+<div align="center">
 
-Thanks for visiting my profile! 🙏
+<!-- PROGRAMMING LANGUAGES -->
+<img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" height="27" />
+<img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" height="27">
+<img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" height="27">
+<img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" height="27">
 
-Feel free to explore my repositories and don't hesitate to reach out for collaborations!
+<!-- WEB DEV -->
+<img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black" height="27">
+<img src="https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white" height="27">
+
+<!-- BACKEND -->
+<img src="https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" height="27">
+
+<!-- DATABASE -->
+<img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" height="27">
+
+<!-- TOOLS -->
+<img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="27">
+<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" height="27">
 
 </div>
 
-### <img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/4503d891-510a-4ebd-94c4-ef8958a2e8d4" width="20"> About Me
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+---
 
-<p align="left"> <a href="https://github.com/Lakshay1221-apple" target="_blank"><img src="https://img.shields.io/badge/GitHub-Follow--%3E-black?logo=github&style=for-the-badge" alt="Follow on GitHub" /></a> </p>
-<div class="about-main" style="display: flex;">
-    <div align="left" style="display: flex; margin: 0px 70px 0px 15px; box-shadow: 10px 10px 13px -3px rgba(255,255,255,0.5);" class="about-left">
-        <img align="left" src="https://i.pinimg.com/originals/48/97/66/489766e5f48617be90fad6832dd01570.gif" height="300" width="250">
-    </div>
- 
+# 📊 GitHub Stats  
+
+<div align="center">
+
+<table>
+<tr>
+<td>
+<img src="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&theme=dracula" width="450"/>
+</td>
+<td>
+<img src="https://github-readme-stats.vercel.app/api/top-langs?username=Lakshay1221-apple&show_icons=true&theme=dracula&layout=compact" width="400"/>
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+<img src="https://github-readme-stats.vercel.app/api?username=Lakshay1221-apple&show_icons=true&theme=dracula" width="450"/>
+</td>
+<td>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple&theme=dracula" width="450"/>
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Lakshay1221-apple&theme=react-dark&hide_border=true&area=true" width="95%"/>
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+# 🐍 Snake Graph  
+<div align="center">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" />
+<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
+<img src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
+</picture>
+</div>
+
+---
+
+# 🙋 About Me  
+<img src="https://i.pinimg.com/originals/48/97/66/489766e5f48617be90fad6832dd01570.gif" width="200" align="left"/>
+
+### 👨‍💻 Lakshay Raj  
+- 💼 Full Stack Developer (in progress)  
+- 🤖 AI/ML Explorer  
+- 📧 Email: **lakshaywork012@gmail.com**  
+- 🚀 Passionate about creating real-world impactful projects  
+- 🔥 Always learning & building  
+
+---
+
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer" width="100%"/>
+</p>
