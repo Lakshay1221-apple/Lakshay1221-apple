@@ -4,9 +4,32 @@
 </p> -->
 
 <!--  ANIMATED HEADER WITH IMAGE -->
-<p align="center">
+<!-- <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:00BFFF&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
-</p>
+</p>  -->
+
+<!-- <p align="center"> -->
+  <!-- <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4B0082,100:BE29EC&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=glitch&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
+</p> -->
+
+<!-- <p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4B0082,100:BE29EC&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
+</p> -->
+
+<!-- <p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
+</p> -->
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:240b36,100:c31432&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60&stroke=c31432&strokeWidth=2" />
+<!-- </p>
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:09091a,40:1a1a4f,70:00d2ff,100:ffffff&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60&stroke=00d2ff&strokeWidth=2" />
+</p> -->
+
+<!-- <p align="center">
+  <img src="https://i.imgur.com/VhFQp9B.gif" width="100%" alt="Purple Lightning Banner" />
+</p> -->
 
 <!-- PROFILE ICON BELOW NAME -->
 <!-- <p align="center">
