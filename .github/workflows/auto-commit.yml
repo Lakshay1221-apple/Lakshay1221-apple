@@ -20,8 +20,9 @@ jobs:
 
       - name: Update Log File
         run: |
-          DATE=$(date +"%Y-%m-%d")
-          echo "✅ Auto update on $DATE" >> logs/auto-log.md
+            mkdir -p logs
+            DATE=$(date +"%Y-%m-%d")
+            echo "✅ Auto update on $DATE" >> logs/auto-log.md
 
       - name: Commit Changes
         run: |
