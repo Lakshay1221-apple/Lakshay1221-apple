@@ -2,42 +2,87 @@ name: Daily Auto Commit
 
 on:
   schedule:
-    - cron: "30 18 * * *"   # Runs daily at 12:00 AM IST
+    # 12:00 AM IST = 6:30 PM UTC previous day
+    - cron: "30 18 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   auto-commit:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
-      - name: Checkout Repository
+      - name: Optional: Random Delay to Reduce Runner Contention
+        run: |
+          SECS=$(( RANDOM % 40 ))
+          echo "Sleeping ${SECS}s to reduce runner contention"
+          sleep $SECS
+        shell: bash
+
+      - name: Checkout Repository with Write Token
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true
 
-      - name: Configure Git
+      - name: Configure Git User
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Pull Latest Changes
-        run: |
-          git pull --rebase origin main
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Update Log File
         run: |
           mkdir -p logs
-          DATE=$(date +"%Y-%m-%d")
-          echo "✅ Auto update on $DATE" >> logs/auto-log.md
+          TS=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          echo "✅ Auto update at $TS" >> logs/auto-log.md
 
-      - name: Commit Changes
+      - name: Check for File Changes
+        id: git_status
         run: |
-          git add .
-          git commit -m "📅 Daily auto commit: $(date +\"%Y-%m-%d\")" || echo "No changes to commit"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Push Changes
+      - name: Commit, Pull-Rebase, and Push with Retry (Max 3x)
+        if: steps.git_status.outputs.changed == 'true'
         run: |
-          git push origin main
+          set -e
+          git add logs/auto-log.md
+          git commit -m "🤖 Auto commit at $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+
+          tries=0
+          max_tries=3
+
+          until git pull --rebase origin main && git push origin main; do
+            tries=$((tries + 1))
+            echo "⚠️ Push failed, attempt $tries of $max_tries. Retrying in 3s..."
+            sleep 3
+
+            if [ "$tries" -ge "$max_tries" ]; then
+              echo "❌ Failed to push after $max_tries attempts."
+              exit 1
+            fi
+          done
+
+      - name: No Changes to Commit
+        if: steps.git_status.outputs.changed == 'false'
+        run: echo "No file changes detected; nothing to commit."
+
+      - name: Debug & Status Logging (Always Runs)
+        if: always()
+        run: |
+          echo "---------- Workflow Environment ----------"
+          echo "Triggered by: $GITHUB_EVENT_NAME"
+          echo "Scheduled start: 12:00 AM IST / 18:30 UTC"
+          echo "Actual job start: $(date -u)"
+          echo "-----------------------------------------"
+
+          git status
+          git log -3 --pretty=oneline
+
+          echo "---- Recent auto-log.md ----"
+          tail -10 logs/auto-log.md || true
