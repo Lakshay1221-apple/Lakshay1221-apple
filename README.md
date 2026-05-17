@@ -1,32 +1,33 @@
 <!--  NEW HEADER BANNER -->
 <!-- <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:6A5ACD,100:00BFFF&height=180&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=45&desc=aka%[...]
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:6A5ACD,100:00BFFF&height=180&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=45&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=70" />
 </p> -->
 
 <!--  ANIMATED HEADER WITH IMAGE -->
 <!-- <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:00BFFF&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=ak[...]
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:00BFFF&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
 </p>  -->
 
 <!-- <p align="center"> -->
-  <!-- <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4B0082,100:BE29EC&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=glitch&fontAlignY=35&de[...]
+  <!-- <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4B0082,100:BE29EC&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=glitch&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
 </p> -->
 
 <!-- <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4B0082,100:BE29EC&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc[...]
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4B0082,100:BE29EC&height=230&section=header&text=Lakshay%20Raj&fontSize=65&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
 </p> -->
 
 <!-- <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=fadeIn&fontAlignY=[...]
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60" />
 </p> -->
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:240b36,100:c31432&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=[...]
-</p>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:240b36,100:c31432&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60&stroke=c31432&strokeWidth=2" />
+
+  
 
 <!-- </p>
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:09091a,40:1a1a4f,70:00d2ff,100:ffffff&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinklin[...]
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:09091a,40:1a1a4f,70:00d2ff,100:ffffff&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60&stroke=00d2ff&strokeWidth=2" />
 </p> -->
 
 <!-- <p align="center">
@@ -48,6 +49,7 @@
        width="1000" alt="Mario Running" />
 </p>
 
+
 <!-- CONTACT BADGES -->
 <p align="center">
 <a href="mailto:lakshaywork012@gmail.com"><img align="center" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
@@ -62,7 +64,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3500&pause=500&color=00BFFF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Full+Stack+Develo[...]
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3500&pause=500&color=00BFFF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Full+Stack+Developer+in+Progress🚀;AI+%26+ML+Enthusiast+⚡" />
 </p>
 
 <!-- PROFILE VIEWS -->
@@ -74,7 +76,7 @@
 
 # 🏆 GitHub Trophies  
 <p align="center">
-<img src="https://github-trophies.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=MultiLanguage,Organizations,Commits,Stars,PullRequest,Repos[...]
+<img src="https://github-trophies.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=MultiLanguage,Organizations,Commits,Stars,PullRequest,Repositories,Followers,Issues&row=1&column=8">
 </p>
 
 <p align="center">
@@ -84,7 +86,7 @@
 ---
 
 # ⚙️ Skills & Tools  
-<p align="center">
+<div align="center">
 
 <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" height="27" />
 <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" height="27">
@@ -105,12 +107,12 @@
 <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" height="27">
 <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" height="27">
 
-</p>
+</div>
 
 ---
 
 # 📊 GitHub Stats  
-<p align="center">
+<div align="center">
 
 <img src="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&theme=dracula" width="450"/>
 
@@ -122,14 +124,18 @@
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=Lakshay1221-apple&theme=react-dark&hide_border=true&area=true" width="95%"/>
 
-</p>
+</div>
 
 ---
 
 # 🐍 Snake Eating My Contributions
-<p align="center">
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
   <img alt="github-snake" src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
-</p>
+</picture>
+</div>
 
 ---
 
