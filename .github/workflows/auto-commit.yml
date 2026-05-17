@@ -9,6 +9,9 @@ jobs:
   auto-commit:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -20,14 +23,19 @@ jobs:
 
       - name: Update Log File
         run: |
-            mkdir -p logs
-            DATE=$(date +"%Y-%m-%d")
-            echo "✅ Auto update on $DATE" >> logs/auto-log.md
+          mkdir -p logs
+          DATE=$(date +"%Y-%m-%d")
+          echo "✅ Auto update on $DATE" >> logs/auto-log.md
 
       - name: Commit Changes
         run: |
           git add .
           git commit -m "📅 Daily auto commit: $(date +"%Y-%m-%d")" || echo "No changes to commit"
 
+      - name: Pull Latest Changes
+        run: |
+          git pull --rebase origin main
+
       - name: Push Changes
-        run: git push
+        run: |
+          git push origin main
