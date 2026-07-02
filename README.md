@@ -60,11 +60,11 @@
 
 <!-- TYPING HEADING -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=40&center=true&vCenter=true&width=550&height=70&duration=4000&lines=Hi+There!+👋;I'm+Lakshay+Raj" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Righteous&size=40&center=true&vCenter=true&width=550&height=70&duration=4000&lines=Hi+There!+👋;I'm+Lakshay+Raj" />
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3500&pause=500&color=00BFFF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Full+Stack+Developer+in+Progress🚀;AI+%26+ML+Enthusiast+⚡" />
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=22&duration=3500&pause=500&color=00BFFF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Full+Stack+Developer+in+Progress🚀;AI+%26+ML+Enthusiast+⚡" />
 </p>
 
 <!-- PROFILE VIEWS -->
@@ -80,7 +80,7 @@
 </p>
 
 <p align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=Experience,Review">
+<img src="https://github-profile-trophy-liard-delta.vercel.app/?username=Lakshay1221-apple&theme=radical&no-frame=false&no-bg=true&margin-w=4&margin-h=4&title=Stars,Commits,Repositories,Followers,Issues,PullRequest,Organizations&row=1&column=7">
 </p>
 
 ---
@@ -114,11 +114,11 @@
 # 📊 GitHub Stats  
 <div align="center">
 
-<img src="https://nirzak-streak-stats.vercel.app/?user=Lakshay1221-apple&theme=dracula" width="450"/>
+<img src="https://streak-stats.demolab.com?user=Lakshay1221-apple&theme=dracula" width="450"/>
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs?username=Lakshay1221-apple&show_icons=true&theme=dracula&layout=compact" width="400"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Lakshay1221-apple&theme=dracula" width="400"/>
 
-<img src="https://github-readme-stats.vercel.app/api?username=Lakshay1221-apple&show_icons=true&theme=dracula" width="450"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Lakshay1221-apple&theme=dracula" width="450"/>
 
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple&theme=dracula" width="450"/>
 
@@ -140,7 +140,7 @@
 ---
 
 # 🙋 About Me  
-<img src="https://i.pinimg.com/originals/48/97/66/489766e5f48617be90fad6832dd01570.gif" width="200" align="left"/>
+<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2MyN2k3dDI4bmNmbGFjNHI5dGwzdHE4YjJkZmtzbml3NmJ2OG5iMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BMBjYjCXC9VcFe1Pk5/giphy.gif" width="200" align="left"/>
 
 ### 👨‍💻 Lakshay Raj  
 - 💼 Full Stack Developer (in progress)  
