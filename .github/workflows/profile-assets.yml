@@ -1,0 +1,47 @@
+name: Update profile assets
+
+# Generates assets/trophies.svg and assets/activity-graph.svg inside this repo,
+# so the README never depends on third-party image servers for them.
+
+on:
+  schedule:
+    - cron: "30 */6 * * *"   # every 6 hours
+  workflow_dispatch:          # run manually from the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - "scripts/generate_profile_assets.py"
+      - ".github/workflows/profile-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate SVGs
+        env:
+          GH_USER: ${{ github.repository_owner }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/generate_profile_assets.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/trophies.svg assets/activity-graph.svg
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update profile assets"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
