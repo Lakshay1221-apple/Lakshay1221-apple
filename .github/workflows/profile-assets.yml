@@ -1,7 +1,8 @@
 name: Update profile assets
 
-# Generates assets/trophies.svg and assets/activity-graph.svg inside this repo,
-# so the README never depends on third-party image servers for them.
+# Generates assets/trophies.svg and assets/activity-graph.svg inside this repo.
+# PROFILE_GH_TOKEN must be a personal token for the profile owner; GITHUB_TOKEN
+# cannot read the owner's private repositories or private contribution data.
 
 on:
   schedule:
@@ -30,7 +31,7 @@ jobs:
       - name: Generate SVGs
         env:
           GH_USER: ${{ github.repository_owner }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PROFILE_GH_TOKEN }}
         run: python scripts/generate_profile_assets.py
 
       - name: Commit changes

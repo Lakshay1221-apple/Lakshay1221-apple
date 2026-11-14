@@ -121,8 +121,9 @@
 ## 📊 GitHub Stats
 
 <!-- Trophies + activity graph are generated into assets/ by .github/workflows/profile-assets.yml.
-     Contributions and commits use GitHub's current contribution data; repositories means
-     public, non-fork repositories visible to the profile. -->
+     PROFILE_GH_TOKEN supplies owner-authenticated data: contributions are the current
+     rolling year, commits are summed across the account's calendar years, and repositories
+     includes public, private, and forked repositories without exposing repository names. -->
 <div align="center">
 
 <details open>

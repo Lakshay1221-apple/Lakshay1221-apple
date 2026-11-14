@@ -52,6 +52,13 @@ def gql(query, variables):
 
 def fetch():
     now = dt.datetime.now(dt.timezone.utc)
+    identity = gql("query{viewer{login}}", {})["viewer"]["login"]
+    if identity != USER:
+        raise SystemExit(
+            "GH_TOKEN must authenticate as the profile owner so private repositories "
+            "and contributions are included"
+        )
+
     head = gql("query($l:String!){user(login:$l){createdAt}}", {"l": USER})["user"]
     created = dt.datetime.fromisoformat(head["createdAt"].replace("Z", "+00:00"))
 
@@ -68,7 +75,10 @@ def fetch():
         followers { totalCount }
         pullRequests { totalCount }
         issues { totalCount }
-        repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) { totalCount }
+        repositories(ownerAffiliations: OWNER) { totalCount }
+        publicRepositories: repositories(ownerAffiliations: OWNER, privacy: PUBLIC) { totalCount }
+        privateRepositories: repositories(ownerAffiliations: OWNER, privacy: PRIVATE) { totalCount }
+        forkRepositories: repositories(ownerAffiliations: OWNER, isFork: true) { totalCount }
         contributionsCollection {
             contributionCalendar {
                 totalContributions
@@ -85,7 +95,7 @@ def fetch():
     while True:
         repos = gql(
             """query($l:String!,$after:String){user(login:$l){
-                 repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, first: 100, after: $after){
+                 repositories(ownerAffiliations: OWNER, first: 100, after: $after){
                    nodes{stargazerCount} pageInfo{hasNextPage endCursor}}}}""",
             {"l": USER, "after": cursor},
         )["user"]["repositories"]
@@ -107,6 +117,9 @@ def fetch():
         "prs": u["pullRequests"]["totalCount"],
         "issues": u["issues"]["totalCount"],
         "repos": u["repositories"]["totalCount"],
+        "public_repos": u["publicRepositories"]["totalCount"],
+        "private_repos": u["privateRepositories"]["totalCount"],
+        "forks": u["forkRepositories"]["totalCount"],
         "stars": stars,
         "commits": commits,
         "contributions": u["contributionsCollection"]["contributionCalendar"]["totalContributions"],
@@ -118,8 +131,20 @@ def mock():
     rnd = random.Random(7)
     start = dt.date.today() - dt.timedelta(days=40)
     days = [((start + dt.timedelta(days=i)).isoformat(), max(0, int(rnd.gauss(6, 6)))) for i in range(41)]
-    return {"joined": 2025, "followers": 12, "prs": 10, "issues": 0, "repos": 43,
-            "stars": 95, "commits": 777, "contributions": 900, "days": days}
+    return {
+        "joined": 2025,
+        "followers": 12,
+        "prs": 10,
+        "issues": 0,
+        "repos": 71,
+        "public_repos": 50,
+        "private_repos": 21,
+        "forks": 7,
+        "stars": 95,
+        "commits": 777,
+        "contributions": 900,
+        "days": days,
+    }
 
 
 # --------------------------------------------------------------------------- trophies
@@ -151,7 +176,8 @@ def trophies_svg(d):
         ("Followers", d["followers"], f"{d['followers']} followers", [1, 5, 10, 25, 50, 100, 250, 500]),
         ("Contributions", d["contributions"], f"{d['contributions']} this year", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
         ("Commits", d["commits"], f"{d['commits']} commits", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
-        ("Public Repositories", d["repos"], f"{d['repos']} public repos", [1, 5, 10, 20, 35, 50, 75, 100]),
+        ("Repositories", d["repos"], f"{d['repos']} total repos", [1, 5, 10, 20, 35, 50, 75, 100]),
+        ("Public Repositories", d["public_repos"], f"{d['public_repos']} public repos", [1, 5, 10, 20, 35, 50, 75, 100]),
         ("Stars", d["stars"], f"{d['stars']} stars", [1, 5, 10, 30, 75, 150, 400, 1000]),
         ("Issues", d["issues"], f"{d['issues']} issues", [1, 5, 10, 25, 50, 100, 250, 500]),
         ("PullRequest", d["prs"], f"{d['prs']} PRs", [1, 5, 10, 25, 50, 100, 250, 500]),
