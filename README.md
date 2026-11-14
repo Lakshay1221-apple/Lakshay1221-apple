@@ -1,10 +1,14 @@
 <!-- ═══════════ HEADER BANNER ═══════════ -->
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:240b36,100:c31432&height=250&section=header&text=Lakshay%20Raj&fontSize=70&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=aka%20Lakshay1221-apple&descSize=22&descAlignY=60&stroke=c31432&strokeWidth=2" alt="Lakshay Raj banner" width="100%" />
-</p><!-- ═══════════ MARIO GIF ═══════════ -->
+</p>
+
+<!-- ═══════════ MARIO GIF ═══════════ -->
 <p align="center">
   <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="100%" alt="Mario running" />
-</p><!-- ═══════════ CONTACT BADGES ═══════════
+</p>
+
+<!-- ═══════════ CONTACT BADGES ═══════════
      TODO: replace the placeholder handles below with your real profile links,
      then remove the comment markers around each badge. -->
 <p align="center">
@@ -13,16 +17,29 @@
   <!-- <a href="https://x.com/YOUR_HANDLE"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" height="27" /></a> -->
   <!-- <a href="https://www.linkedin.com/in/YOUR_HANDLE"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" height="27" /></a> -->
   <!-- <a href="https://instagram.com/YOUR_HANDLE"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" height="27" /></a> -->
-</p><!-- ═══════════ TYPING HEADINGS (emoji + apostrophe are URL-encoded) ═══════════ -->
+</p>
+
+<!-- ═══════════ TYPING HEADINGS (emoji + apostrophe are URL-encoded) ═══════════ -->
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Righteous&size=40&duration=4000&pause=1000&center=true&vCenter=true&width=550&height=70&lines=Hi+There!+%F0%9F%91%8B;I%27m+Lakshay+Raj" alt="Hi There! I'm Lakshay Raj" />
-</p><p align="center">
+</p>
+
+<p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3500&pause=500&color=00BFFF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Full+Stack+Developer+in+Progress+%F0%9F%9A%80;AI+%26+ML+Enthusiast+%E2%9A%A1" alt="Welcome to my GitHub Profile! Full Stack Developer in Progress. AI and ML Enthusiast." />
-</p><!-- ═══════════ PROFILE VIEWS ═══════════ -->
+</p>
+
+<!-- ═══════════ PROFILE VIEWS ═══════════ -->
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=Lakshay1221-apple&label=Profile%20Views&color=blueviolet&style=for-the-badge" alt="Profile views" />
-</p>⚙️ Skills & Tools
-<div align="center"><a href="https://en.cppreference.com/w/c"><img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C" /></a>
+</p>
+
+---
+
+## ⚙️ Skills & Tools
+
+<div align="center">
+
+<a href="https://en.cppreference.com/w/c"><img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C" /></a>
 <a href="https://isocpp.org/"><img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++" /></a>
 <a href="https://developer.mozilla.org/docs/Web/HTML"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" /></a>
 <a href="https://developer.mozilla.org/docs/Web/CSS"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" /></a>
@@ -96,15 +113,24 @@
 <a href="https://www.postman.com/"><img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" /></a>
 <a href="https://powerbi.microsoft.com/"><img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI" /></a>
 <a href="https://www.cisco.com/"><img src="https://img.shields.io/badge/Cisco-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" alt="Cisco" /></a>
-</div>📊 GitHub Stats
-<!-- Trophies + activity graph are generated from PUBLIC GitHub profile data only
-     by .github/workflows/profile-assets.yml. Private repositories and private contributions
-     are excluded from all generated statistics. -->
-<div align="center"><details open>
+
+</div>
+
+---
+
+## 📊 GitHub Stats
+
+<!-- Trophies + activity graph are generated into assets/ by .github/workflows/profile-assets.yml,
+     so they don't depend on third-party image servers. -->
+<div align="center">
+
+<details open>
 <summary><b>🏆 Trophies</b></summary>
 <br />
 <img src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/main/assets/trophies.svg" alt="GitHub trophies" />
-</details><details open>
+</details>
+
+<details open>
 <summary><b>🔥 Streak & Summary</b></summary>
 <br />
 <a href="https://github.com/Lakshay1221-apple"><img src="https://streak-stats.demolab.com?user=Lakshay1221-apple&theme=dracula&hide_border=true" width="450" alt="GitHub streak" /></a>
@@ -112,24 +138,46 @@
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Lakshay1221-apple&theme=dracula" width="450" alt="GitHub stats" />
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Lakshay1221-apple&theme=dracula" width="400" alt="Repos per language" />
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Lakshay1221-apple&theme=dracula" width="450" alt="Profile details" />
-</details><details open>
+</details>
+
+<details open>
 <summary><b>📈 Activity Graph</b></summary>
 <br />
 <img src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/main/assets/activity-graph.svg" width="95%" alt="Contribution activity graph, last 31 days" />
-</details></div>🐍 Snake Eating My Contributions
+</details>
+
+</div>
+
+---
+
+## 🐍 Snake Eating My Contributions
+
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
   <img alt="Snake animation eating my GitHub contributions" src="https://raw.githubusercontent.com/Lakshay1221-apple/Lakshay1221-apple/output/github-snake.svg" />
 </picture>
-</div>🙋 About Me
-<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2MyN2k3dDI4bmNmbGFjNHI5dGwzdHE4YjJkZmtzbml3NmJ2OG5iMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BMBjYjCXC9VcFe1Pk5/giphy.gif" width="200" align="left" alt="Phoenix GIF" />👨‍💻 Lakshay Raj
-- 💼 Full Stack Developer (in progress)
+</div>
+
+---
+
+## 🙋 About Me
+
+<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2MyN2k3dDI4bmNmbGFjNHI5dGwzdHE4YjJkZmtzbml3NmJ2OG5iMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BMBjYjCXC9VcFe1Pk5/giphy.gif" width="200" align="left" alt="Phoenix GIF" />
+
+### 👨‍💻 Lakshay Raj
+
+- 💼 Full Stack Developer *(in progress)*
 - 🤖 AI/ML Explorer
-- 📧 Email: lakshaywork012@gmail.com
+- 📧 Email: [lakshaywork012@gmail.com](mailto:lakshaywork012@gmail.com)
 - 🚀 Building real-world impactful projects
 - 🔥 Always learning & leveling up
-<br clear="left" /><p align="center">
+
+<br clear="left" />
+
+---
+
+<p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer" width="100%" alt="" />
 </p>
