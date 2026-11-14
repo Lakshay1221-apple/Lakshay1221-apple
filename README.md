@@ -120,8 +120,9 @@
 
 ## 📊 GitHub Stats
 
-<!-- Trophies + activity graph are generated into assets/ by .github/workflows/profile-assets.yml,
-     so they don't depend on third-party image servers. -->
+<!-- Trophies + activity graph are generated into assets/ by .github/workflows/profile-assets.yml.
+     Contributions and commits use GitHub's current contribution data; repositories means
+     public, non-fork repositories visible to the profile. -->
 <div align="center">
 
 <details open>

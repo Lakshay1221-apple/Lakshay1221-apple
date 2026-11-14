@@ -69,7 +69,12 @@ def fetch():
         pullRequests { totalCount }
         issues { totalCount }
         repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) { totalCount }
-        contributionsCollection { contributionCalendar { weeks { contributionDays { date contributionCount } } } }
+        contributionsCollection {
+            contributionCalendar {
+                totalContributions
+                weeks { contributionDays { date contributionCount } }
+            }
+        }
         %s
     } }""" % "\n".join(year_fields)
     u = gql(query, {"l": USER})["user"]
@@ -104,6 +109,7 @@ def fetch():
         "repos": u["repositories"]["totalCount"],
         "stars": stars,
         "commits": commits,
+        "contributions": u["contributionsCollection"]["contributionCalendar"]["totalContributions"],
         "days": days,
     }
 
@@ -113,7 +119,7 @@ def mock():
     start = dt.date.today() - dt.timedelta(days=40)
     days = [((start + dt.timedelta(days=i)).isoformat(), max(0, int(rnd.gauss(6, 6)))) for i in range(41)]
     return {"joined": 2025, "followers": 12, "prs": 10, "issues": 0, "repos": 43,
-            "stars": 95, "commits": 777, "days": days}
+            "stars": 95, "commits": 777, "contributions": 900, "days": days}
 
 
 # --------------------------------------------------------------------------- trophies
@@ -143,8 +149,9 @@ def trophies_svg(d):
     items = [
         (f"Joined{d['joined']}", age, f"{age} yr" + ("" if age == 1 else "s"), [0, 1, 2, 3, 5, 7, 10, 15]),
         ("Followers", d["followers"], f"{d['followers']} followers", [1, 5, 10, 25, 50, 100, 250, 500]),
+        ("Contributions", d["contributions"], f"{d['contributions']} this year", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
         ("Commits", d["commits"], f"{d['commits']} commits", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
-        ("Repositories", d["repos"], f"{d['repos']} repos", [1, 5, 10, 20, 35, 50, 75, 100]),
+        ("Public Repositories", d["repos"], f"{d['repos']} public repos", [1, 5, 10, 20, 35, 50, 75, 100]),
         ("Stars", d["stars"], f"{d['stars']} stars", [1, 5, 10, 30, 75, 150, 400, 1000]),
         ("Issues", d["issues"], f"{d['issues']} issues", [1, 5, 10, 25, 50, 100, 250, 500]),
         ("PullRequest", d["prs"], f"{d['prs']} PRs", [1, 5, 10, 25, 50, 100, 250, 500]),
