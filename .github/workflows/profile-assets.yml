@@ -1,40 +1,47 @@
+
+    
+  
 name: Update profile assets
 
-# Generates assets/trophies.svg and assets/activity-graph.svg inside this repo.
-# PROFILE_GH_TOKEN must be a personal token for the profile owner; GITHUB_TOKEN
-# cannot read the owner's private repositories or private contribution data.
+# Generate public-only profile statistics. No personal access token is required.
 
 on:
   schedule:
-    - cron: "30 */6 * * *"   # every 6 hours
-  workflow_dispatch:          # run manually from the Actions tab
+    - cron: "30 */6 * * *" # Every 6 hours
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
       - "scripts/generate_profile_assets.py"
       - ".github/workflows/profile-assets.yml"
 
-permissions:
-  contents: write
+# Serialize updates so scheduled/manual runs cannot race while committing assets.
+concurrency:
+  group: profile-assets-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Generate SVGs
+      - name: Generate public-only SVGs
         env:
           GH_USER: ${{ github.repository_owner }}
-          GH_TOKEN: ${{ secrets.PROFILE_GH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: python scripts/generate_profile_assets.py
 
-      - name: Commit changes
+      - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -42,7 +49,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update profile assets"
-            git pull --rebase origin main
+            git commit -m "chore: update public profile assets"
             git push origin HEAD:main
           fi
+
