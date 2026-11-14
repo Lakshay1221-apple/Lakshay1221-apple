@@ -1,164 +1,60 @@
-#!/usr/bin/env python3
-"""Builds assets/trophies.svg and assets/activity-graph.svg from GitHub's GraphQL API.
 
-Why this exists: the public trophy / activity-graph hosts are often down or
-rate-limited, which shows up as broken images in a README. These two files are
-generated inside your own repo by a GitHub Action, so they always load.
-
-Env vars:
-  GH_USER   GitHub username (default: Lakshay1221-apple)
-  GH_TOKEN  token for the API (the Action passes secrets.GITHUB_TOKEN)
-  OUT_DIR   output folder (default: assets)
-  MOCK=1    use fake data (for local layout testing only)
-"""
-import datetime as dt
-import json
-import math
-import os
-import random
-import urllib.request
-from html import escape
-
-USER = os.environ.get("GH_USER", "Lakshay1221-apple")
-TOKEN = os.environ.get("GH_TOKEN", "")
-OUT = os.environ.get("OUT_DIR", "assets")
-
-FONT = "'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif"
-BG, BORDER, TITLE, MUTED = "#1a1b27", "#2f3549", "#70a5fd", "#a9b1d6"
-LINE = "#4d6bff"
-
-RANKS = ["C", "B", "A", "AA", "AAA", "S", "SS", "SSS"]
-RANK_COLORS = ["#8a94a6", "#6ea8ff", "#3ddc97", "#2ec4b6", "#ffd166", "#ffb347", "#ff9f43", "#ff6b6b"]
-UNRANKED = "#4a5068"
-
-
-# --------------------------------------------------------------------------- data
-def gql(query, variables):
-    req = urllib.request.Request(
-        "https://api.github.com/graphql",
-        data=json.dumps({"query": query, "variables": variables}).encode(),
-        headers={
-            "Authorization": f"bearer {TOKEN}",
-            "Content-Type": "application/json",
-            "User-Agent": "profile-assets-script",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        payload = json.load(resp)
-    if payload.get("errors"):
-        raise SystemExit(f"GitHub API error: {payload['errors']}")
-    return payload["data"]
-
-
-def fetch():
-    now = dt.datetime.now(dt.timezone.utc)
-    identity = gql("query{viewer{login}}", {})["viewer"]["login"]
-    if identity != USER:
-        raise SystemExit(
-            "GH_TOKEN must authenticate as the profile owner so private repositories "
-            "and contributions are included"
-        )
-
-    head = gql("query($l:String!){user(login:$l){createdAt}}", {"l": USER})["user"]
-    created = dt.datetime.fromisoformat(head["createdAt"].replace("Z", "+00:00"))
-
-    # commits per calendar year (the API allows at most one year per range)
-    year_fields = []
-    for y in range(created.year, now.year + 1):
-        end = now.strftime("%Y-%m-%dT%H:%M:%SZ") if y == now.year else f"{y}-12-31T23:59:59Z"
-        year_fields.append(
-            f'y{y}: contributionsCollection(from: "{y}-01-01T00:00:00Z", to: "{end}") '
-            f"{{ totalCommitContributions }}"
-        )
-    query = """
-    query($l: String!) { user(login: $l) {
-        followers { totalCount }
-        pullRequests { totalCount }
-        issues { totalCount }
-        repositories(ownerAffiliations: OWNER) { totalCount }
-        publicRepositories: repositories(ownerAffiliations: OWNER, privacy: PUBLIC) { totalCount }
-        privateRepositories: repositories(ownerAffiliations: OWNER, privacy: PRIVATE) { totalCount }
-        forkRepositories: repositories(ownerAffiliations: OWNER, isFork: true) { totalCount }
-        contributionsCollection {
-            contributionCalendar {
-                totalContributions
-                weeks { contributionDays { date contributionCount } }
-            }
-        }
-        %s
-    } }""" % "\n".join(year_fields)
-    u = gql(query, {"l": USER})["user"]
-
-    commits = sum(v["totalCommitContributions"] for k, v in u.items() if k[0] == "y" and k[1:].isdigit())
-
-    stars, cursor = 0, None
-    while True:
-        repos = gql(
-            """query($l:String!,$after:String){user(login:$l){
-                 repositories(ownerAffiliations: OWNER, first: 100, after: $after){
-                   nodes{stargazerCount} pageInfo{hasNextPage endCursor}}}}""",
-            {"l": USER, "after": cursor},
-        )["user"]["repositories"]
-        stars += sum(n["stargazerCount"] for n in repos["nodes"])
-        if not repos["pageInfo"]["hasNextPage"]:
-            break
-        cursor = repos["pageInfo"]["endCursor"]
-
-    today = now.strftime("%Y-%m-%d")
+    
+  
     days = [
-        (d["date"], d["contributionCount"])
-        for w in u["contributionsCollection"]["contributionCalendar"]["weeks"]
-        for d in w["contributionDays"]
-        if d["date"] <= today
+        (day["date"], day["contributionCount"])
+        for week in calendar["weeks"]
+        for day in week["contributionDays"]
+        if day["date"] <= today
     ]
     return {
         "joined": created.year,
-        "followers": u["followers"]["totalCount"],
-        "prs": u["pullRequests"]["totalCount"],
-        "issues": u["issues"]["totalCount"],
-        "repos": u["repositories"]["totalCount"],
-        "public_repos": u["publicRepositories"]["totalCount"],
-        "private_repos": u["privateRepositories"]["totalCount"],
-        "forks": u["forkRepositories"]["totalCount"],
-        "stars": stars,
-        "commits": commits,
-        "contributions": u["contributionsCollection"]["contributionCalendar"]["totalContributions"],
+        "followers": user["followers"]["totalCount"],
+        "public_repos": user["publicRepositories"]["totalCount"],
+        "public_forks": user["publicForkRepositories"]["totalCount"],
+        "public_original_repos": user["publicOriginalRepositories"]["totalCount"],
+        "stars": public_stars,
+        "languages": len(public_languages),
+        "commits": public_commits,
+        "contributions": calendar["totalContributions"],
         "days": days,
     }
 
 
-def mock():
-    rnd = random.Random(7)
-    start = dt.date.today() - dt.timedelta(days=40)
-    days = [((start + dt.timedelta(days=i)).isoformat(), max(0, int(rnd.gauss(6, 6)))) for i in range(41)]
+def mock() -> dict:
+    """Deterministic fake data for local SVG layout checks only."""
+    rng = random.Random(7)
+    today = dt.date.today()
+    start = today - dt.timedelta(days=30)
+    days = [
+        ((start + dt.timedelta(days=i)).isoformat(), max(0, int(rng.gauss(6, 6))))
+        for i in range(31)
+    ]
     return {
         "joined": 2025,
         "followers": 12,
-        "prs": 10,
-        "issues": 0,
-        "repos": 71,
         "public_repos": 50,
-        "private_repos": 21,
-        "forks": 7,
+        "public_forks": 7,
+        "public_original_repos": 43,
         "stars": 95,
+        "languages": 14,
         "commits": 777,
-        "contributions": 900,
+        "contributions": sum(value for _, value in days),
         "days": days,
     }
 
 
-# --------------------------------------------------------------------------- trophies
-def rank_of(value, thresholds):
-    idx = sum(1 for t in thresholds if value >= t) - 1
-    if idx < 0:
+def rank_of(value: int, thresholds: list[int]) -> tuple[int, float]:
+    index = sum(1 for threshold in thresholds if value >= threshold) - 1
+    if index < 0:
         return -1, 0.0
-    if idx >= len(thresholds) - 1:
-        return idx, 1.0
-    lo, hi = thresholds[idx], thresholds[idx + 1]
-    return idx, max(0.0, min(1.0, (value - lo) / (hi - lo)))
+    if index >= len(thresholds) - 1:
+        return index, 1.0
+    low, high = thresholds[index], thresholds[index + 1]
+    return index, max(0.0, min(1.0, (value - low) / (high - low)))
 
 
-def cup(color):
+def cup(color: str) -> str:
     return (
         f'<path d="M-14 0 H14 V12 C14 24 8 30 0 30 C-8 30 -14 24 -14 12 Z" fill="{color}"/>'
         f'<path d="M-14 4 H-20 C-23 4 -22 15 -13 17" fill="none" stroke="{color}" stroke-width="3" stroke-linecap="round"/>'
@@ -169,108 +65,118 @@ def cup(color):
     )
 
 
-def trophies_svg(d):
-    age = dt.datetime.now(dt.timezone.utc).year - d["joined"]
+def trophies_svg(data: dict) -> str:
+    age = max(0, dt.datetime.now(dt.timezone.utc).year - data["joined"])
     items = [
-        (f"Joined{d['joined']}", age, f"{age} yr" + ("" if age == 1 else "s"), [0, 1, 2, 3, 5, 7, 10, 15]),
-        ("Followers", d["followers"], f"{d['followers']} followers", [1, 5, 10, 25, 50, 100, 250, 500]),
-        ("Contributions", d["contributions"], f"{d['contributions']} this year", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
-        ("Commits", d["commits"], f"{d['commits']} commits", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
-        ("Repositories", d["repos"], f"{d['repos']} total repos", [1, 5, 10, 20, 35, 50, 75, 100]),
-        ("Public Repositories", d["public_repos"], f"{d['public_repos']} public repos", [1, 5, 10, 20, 35, 50, 75, 100]),
-        ("Stars", d["stars"], f"{d['stars']} stars", [1, 5, 10, 30, 75, 150, 400, 1000]),
-        ("Issues", d["issues"], f"{d['issues']} issues", [1, 5, 10, 25, 50, 100, 250, 500]),
-        ("PullRequest", d["prs"], f"{d['prs']} PRs", [1, 5, 10, 25, 50, 100, 250, 500]),
+        (f"Joined {data['joined']}", age, f"{age} yr" + ("" if age == 1 else "s"), [0, 1, 2, 3, 5, 7, 10, 15]),
+        ("Followers", data["followers"], f"{data['followers']} followers", [1, 5, 10, 25, 50, 100, 250, 500]),
+        ("Contributions", data["contributions"], f"{data['contributions']} public / year", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
+        ("Commit Contributions", data["commits"], f"{data['commits']} public commit contrib.", [10, 100, 300, 600, 1000, 2000, 4000, 8000]),
+        ("Public Repos", data["public_repos"], f"{data['public_repos']} public repos", [1, 5, 10, 20, 35, 50, 75, 100]),
+        ("Public Forks", data["public_forks"], f"{data['public_forks']} public forks", [1, 5, 10, 20, 35, 50, 75, 100]),
+        ("Original Repos", data["public_original_repos"], f"{data['public_original_repos']} originals", [1, 5, 10, 20, 35, 50, 75, 100]),
+        ("Public Stars", data["stars"], f"{data['stars']} public stars", [1, 5, 10, 30, 75, 150, 400, 1000]),
+        ("Languages", data["languages"], f"{data['languages']} languages", [1, 2, 3, 5, 8, 12, 20, 30]),
     ]
-    cw, ch, gap = 104, 150, 8
-    width = len(items) * cw + (len(items) - 1) * gap
-    out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{ch}" viewBox="0 0 {width} {ch}" role="img" '
-        f'aria-label="GitHub trophies for {escape(USER)}"><title>GitHub trophies for {escape(USER)}</title>'
+    card_width, card_height, gap = 104, 150, 8
+    width = len(items) * card_width + (len(items) - 1) * gap
+    output = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{card_height}" viewBox="0 0 {width} {card_height}" role="img" '
+        f'aria-label="Public GitHub trophies for {escape(USER)}"><title>Public GitHub trophies for {escape(USER)}</title>'
     ]
-    for i, (title, value, label, th) in enumerate(items):
-        idx, pct = rank_of(value, th)
-        color = RANK_COLORS[idx] if idx >= 0 else UNRANKED
-        rank = RANKS[idx] if idx >= 0 else "-"
-        x = i * (cw + gap)
-        out.append(
+    for index, (title, value, label, thresholds) in enumerate(items):
+        rank_index, progress = rank_of(value, thresholds)
+        color = RANK_COLORS[rank_index] if rank_index >= 0 else UNRANKED
+        rank = RANKS[rank_index] if rank_index >= 0 else "-"
+        x = index * (card_width + gap)
+        output.append(
             f'<g transform="translate({x} 0)">'
-            f'<rect x=".5" y=".5" width="{cw - 1}" height="{ch - 1}" rx="8" fill="{BG}" stroke="{BORDER}"/>'
-            f'<text x="{cw / 2}" y="22" text-anchor="middle" font-family="{FONT}" font-size="12" font-weight="700" fill="{TITLE}">{escape(title)}</text>'
-            f'<g transform="translate({cw / 2} 34)">{cup(color)}</g>'
-            f'<text x="{cw / 2}" y="106" text-anchor="middle" font-family="{FONT}" font-size="16" font-weight="700" fill="{color}">{rank}</text>'
-            f'<text x="{cw / 2}" y="124" text-anchor="middle" font-family="{FONT}" font-size="10" fill="{MUTED}">{escape(label)}</text>'
+            f'<rect x=".5" y=".5" width="{card_width - 1}" height="{card_height - 1}" rx="8" fill="{BG}" stroke="{BORDER}"/>'
+            f'<text x="{card_width / 2}" y="22" text-anchor="middle" font-family="{FONT}" font-size="11" font-weight="700" fill="{TITLE}">{escape(title)}</text>'
+            f'<g transform="translate({card_width / 2} 34)">{cup(color)}</g>'
+            f'<text x="{card_width / 2}" y="106" text-anchor="middle" font-family="{FONT}" font-size="16" font-weight="700" fill="{color}">{rank}</text>'
+            f'<text x="{card_width / 2}" y="124" text-anchor="middle" font-family="{FONT}" font-size="9" fill="{MUTED}">{escape(label)}</text>'
             f'<rect x="12" y="134" width="80" height="4" rx="2" fill="{BORDER}"/>'
-            f'<rect x="12" y="134" width="{80 * pct:.1f}" height="4" rx="2" fill="{color}"/>'
-            "</g>"
+            f'<rect x="12" y="134" width="{80 * progress:.1f}" height="4" rx="2" fill="{color}"/>'
+            '</g>'
         )
-    out.append("</svg>")
-    return "".join(out)
+    output.append("</svg>")
+    return "".join(output)
 
 
-# --------------------------------------------------------------------------- activity graph
-def nice_step(raw):
-    for s in (1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000):
-        if s >= raw:
-            return s
+def nice_step(raw: float) -> int:
+    for step in (1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000):
+        if step >= raw:
+            return step
     return int(math.ceil(raw))
 
 
-def activity_svg(days):
-    pts = days[-31:]
-    W, H = 780, 300
-    L, R, T, B = 60, 24, 60, 52
-    pw, ph = W - L - R, H - T - B
-    peak = max([v for _, v in pts] + [1])
+def activity_svg(days: list[tuple[str, int]]) -> str:
+    points = days[-31:]
+    width, height = 780, 300
+    left, right, top_margin, bottom = 60, 24, 60, 52
+    plot_width, plot_height = width - left - right, height - top_margin - bottom
+    peak = max([value for _, value in points] + [1])
     step = nice_step(peak / 5)
     top = step * math.ceil(peak / step)
-    n = len(pts)
-    xs = [L + (pw * i / (n - 1) if n > 1 else pw / 2) for i in range(n)]
-    ys = [T + ph - (v / top) * ph for _, v in pts]
-    base = T + ph
+    count = len(points)
+    xs = [left + (plot_width * i / (count - 1) if count > 1 else plot_width / 2) for i in range(count)]
+    ys = [top_margin + plot_height - (value / top) * plot_height for _, value in points]
+    baseline = top_margin + plot_height
 
-    o = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" '
-        f'aria-label="{escape(USER)} GitHub activity graph, last 31 days"><title>{escape(USER)}\'s GitHub Activity Graph</title>',
+    output = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" '
+        f'aria-label="{escape(USER)} public GitHub activity graph, last 31 days"><title>{escape(USER)} public GitHub Activity Graph</title>',
         '<defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">'
         f'<stop offset="0" stop-color="{LINE}" stop-opacity=".40"/><stop offset="1" stop-color="{LINE}" stop-opacity="0"/>'
-        "</linearGradient></defs>",
-        f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="10" fill="{BG}" stroke="{BORDER}"/>',
-        f'<text x="{W / 2}" y="32" text-anchor="middle" font-family="{FONT}" font-size="16" font-weight="700" fill="{TITLE}">'
-        f"{escape(USER)}'s GitHub Activity Graph</text>",
+        '</linearGradient></defs>',
+        f'<rect x=".5" y=".5" width="{width - 1}" height="{height - 1}" rx="10" fill="{BG}" stroke="{BORDER}"/>',
+        f'<text x="{width / 2}" y="32" text-anchor="middle" font-family="{FONT}" font-size="16" font-weight="700" fill="{TITLE}">{escape(USER)} Public GitHub Activity Graph</text>',
     ]
-    for val in range(0, top + 1, step):
-        y = base - val / top * ph
-        o.append(f'<line x1="{L}" y1="{y:.1f}" x2="{W - R}" y2="{y:.1f}" stroke="{BORDER}" stroke-dasharray="3 4"/>')
-        o.append(f'<text x="{L - 10}" y="{y + 4:.1f}" text-anchor="end" font-family="{FONT}" font-size="10" fill="{MUTED}">{val}</text>')
+    for value in range(0, top + 1, step):
+        y = baseline - value / top * plot_height
+        output.append(f'<line x1="{left}" y1="{y:.1f}" x2="{width - right}" y2="{y:.1f}" stroke="{BORDER}" stroke-dasharray="3 4"/>')
+        output.append(f'<text x="{left - 10}" y="{y + 4:.1f}" text-anchor="end" font-family="{FONT}" font-size="10" fill="{MUTED}">{value}</text>')
 
-    line = " ".join(f"{x:.1f},{y:.1f}" for x, y in zip(xs, ys))
-    area = f"M{xs[0]:.1f},{base} " + " ".join(f"L{x:.1f},{y:.1f}" for x, y in zip(xs, ys)) + f" L{xs[-1]:.1f},{base} Z"
-    o.append(f'<path d="{area}" fill="url(#fill)"/>')
-    o.append(f'<polyline points="{line}" fill="none" stroke="{LINE}" stroke-width="2" stroke-linejoin="round"/>')
-    for (date, v), x, y in zip(pts, xs, ys):
-        o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{LINE}"><title>{date}: {v} contributions</title></circle>')
-        o.append(f'<text x="{x:.1f}" y="{base + 18}" text-anchor="middle" font-family="{FONT}" font-size="10" fill="{MUTED}">{int(date[8:10])}</text>')
+    if points:
+        line = " ".join(f"{x:.1f},{y:.1f}" for x, y in zip(xs, ys))
+        area = f"M{xs[0]:.1f},{baseline} " + " ".join(f"L{x:.1f},{y:.1f}" for x, y in zip(xs, ys)) + f" L{xs[-1]:.1f},{baseline} Z"
+        output.append(f'<path d="{area}" fill="url(#fill)"/>')
+        output.append(f'<polyline points="{line}" fill="none" stroke="{LINE}" stroke-width="2" stroke-linejoin="round"/>')
+        for (date, value), x, y in zip(points, xs, ys):
+            output.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{LINE}"><title>{date}: {value} public contributions</title></circle>')
+            output.append(f'<text x="{x:.1f}" y="{baseline + 18}" text-anchor="middle" font-family="{FONT}" font-size="10" fill="{MUTED}">{int(date[8:10])}</text>')
+    else:
+        output.append(f'<text x="{width / 2}" y="{baseline - 20}" text-anchor="middle" font-family="{FONT}" font-size="13" fill="{MUTED}">Run the profile-assets workflow to load public activity</text>')
 
-    o.append(f'<text x="{L + pw / 2}" y="{H - 12}" text-anchor="middle" font-family="{FONT}" font-size="11" fill="{MUTED}">Days</text>')
-    o.append(
-        f'<text transform="rotate(-90)" x="{-(T + ph / 2):.1f}" y="18" text-anchor="middle" font-family="{FONT}" '
-        f'font-size="11" fill="{MUTED}">Contributions</text>'
+    output.append(f'<text x="{left + plot_width / 2}" y="{height - 12}" text-anchor="middle" font-family="{FONT}" font-size="11" fill="{MUTED}">Days</text>')
+    output.append(
+        f'<text transform="rotate(-90)" x="{-(top_margin + plot_height / 2):.1f}" y="18" text-anchor="middle" font-family="{FONT}" font-size="11" fill="{MUTED}">Public contributions</text>'
     )
-    o.append("</svg>")
-    return "".join(o)
+    output.append("</svg>")
+    return "".join(output)
 
 
-# --------------------------------------------------------------------------- main
-def main():
-    data = mock() if os.environ.get("MOCK") == "1" else fetch()
-    os.makedirs(OUT, exist_ok=True)
-    with open(os.path.join(OUT, "trophies.svg"), "w", encoding="utf-8") as f:
-        f.write(trophies_svg(data))
-    with open(os.path.join(OUT, "activity-graph.svg"), "w", encoding="utf-8") as f:
-        f.write(activity_svg(data["days"]))
-    print(f"wrote {OUT}/trophies.svg and {OUT}/activity-graph.svg for {USER}")
+def write_atomically(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(content, encoding="utf-8")
+    temporary.replace(path)
+
+
+def main() -> None:
+    validate_identity()
+    data = mock() if MOCK else fetch()
+    write_atomically(OUT / "trophies.svg", trophies_svg(data))
+    write_atomically(OUT / "activity-graph.svg", activity_svg(data["days"]))
+    print(f"Generated public-only profile assets in {OUT} for {USER}.")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (KeyError, TypeError, ValueError) as exc:
+        # Keep logs concise; do not print API payloads or environment values.
+        print(f"Profile asset generation failed: invalid or incomplete public API data ({type(exc).__name__}).", file=sys.stderr)
+        raise SystemExit(1) from None
+
