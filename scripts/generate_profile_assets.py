@@ -9,7 +9,7 @@ Environment:
   GH_USER   GitHub username (defaults to the profile repository owner)
   GH_TOKEN  GitHub Actions token (GITHUB_TOKEN); no PAT is required
   OUT_DIR   Output directory (defaults to assets)
-  MOCK=1    Generate deterministic fake data for local layout testing only
+  MOCK=1    Generate deterministic fake data for local SVG layout testing
 """
 
 from __future__ import annotations
@@ -34,11 +34,20 @@ MOCK = os.environ.get("MOCK") == "1"
 FONT = "'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif"
 BG, BORDER, TITLE, MUTED = "#1a1b27", "#2f3549", "#70a5fd", "#a9b1d6"
 LINE = "#4d6bff"
+
 RANKS = ["C", "B", "A", "AA", "AAA", "S", "SS", "SSS"]
+
 RANK_COLORS = [
-    "#8a94a6", "#6ea8ff", "#3ddc97", "#2ec4b6",
-    "#ffd166", "#ffb347", "#ff9f43", "#ff6b6b"
+    "#8a94a6",
+    "#6ea8ff",
+    "#3ddc97",
+    "#2ec4b6",
+    "#ffd166",
+    "#ffb347",
+    "#ff9f43",
+    "#ff6b6b",
 ]
+
 UNRANKED = "#4a5068"
 
 
@@ -58,10 +67,11 @@ def validate_identity() -> None:
 
 
 def gql(query: str, variables: dict) -> dict:
-    """Call GitHub GraphQL without printing response bodies or credentials."""
+    """Call GitHub GraphQL without exposing credentials or API response data."""
+
     body = json.dumps({
         "query": query,
-        "variables": variables
+        "variables": variables,
     }).encode("utf-8")
 
     request = urllib.request.Request(
@@ -88,21 +98,38 @@ def gql(query: str, variables: dict) -> dict:
     except (
         urllib.error.URLError,
         TimeoutError,
-        json.JSONDecodeError
+        json.JSONDecodeError,
     ):
         raise SystemExit(
             "GitHub GraphQL request failed (network, timeout, or invalid JSON)."
         ) from None
 
+    # IMPROVED ERROR HANDLING:
+    # Show the actual GraphQL error instead of hiding it.
     if payload.get("errors"):
-        raise SystemExit(
-            "GitHub GraphQL returned an error; inspect API permissions and query validity."
-        )
+        for error in payload["errors"]:
+            message = error.get("message", "Unknown GraphQL error")
+            path = error.get("path", [])
+
+            print(
+                f"GraphQL Error: {message}",
+                file=sys.stderr,
+            )
+
+            if path:
+                print(
+                    f"Error path: {path}",
+                    file=sys.stderr,
+                )
+
+        raise SystemExit(1)
 
     data = payload.get("data")
 
     if not isinstance(data, dict):
-        raise SystemExit("GitHub GraphQL returned no usable data.")
+        raise SystemExit(
+            "GitHub GraphQL returned no usable data."
+        )
 
     return data
 
@@ -112,7 +139,7 @@ def fetch() -> dict:
 
     head_data = gql(
         "query($login:String!){ user(login:$login){ createdAt } }",
-        {"login": USER}
+        {"login": USER},
     )
 
     user_head = head_data.get("user")
@@ -126,11 +153,13 @@ def fetch() -> dict:
         user_head["createdAt"].replace("Z", "+00:00")
     )
 
-    # Exclude private contributions from the yearly commit statistics.
+    # Exclude private contributions from yearly commit statistics.
     rolling_from = now - dt.timedelta(days=365)
+
     aliases = []
 
     for year in range(created.year, now.year + 1):
+
         half_year_ranges = [
             (
                 dt.datetime(year, 1, 1, tzinfo=dt.timezone.utc),
@@ -163,25 +192,42 @@ def fetch() -> dict:
     query($login: String!, $from: DateTime!, $to: DateTime!) {
       user(login: $login) {
         createdAt
-        followers { totalCount }
+
+        followers {
+          totalCount
+        }
 
         publicRepositories: repositories(
-          ownerAffiliations: OWNER, privacy: PUBLIC
-        ) { totalCount }
+          ownerAffiliations: OWNER,
+          privacy: PUBLIC
+        ) {
+          totalCount
+        }
 
         publicForkRepositories: repositories(
-          ownerAffiliations: OWNER, privacy: PUBLIC, isFork: true
-        ) { totalCount }
+          ownerAffiliations: OWNER,
+          privacy: PUBLIC,
+          isFork: true
+        ) {
+          totalCount
+        }
 
         publicOriginalRepositories: repositories(
-          ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false
-        ) { totalCount }
+          ownerAffiliations: OWNER,
+          privacy: PUBLIC,
+          isFork: false
+        ) {
+          totalCount
+        }
 
         contributionsCollection(
-          from: $from, to: $to, includePrivateContributions: false
+          from: $from,
+          to: $to,
+          includePrivateContributions: false
         ) {
           contributionCalendar {
             totalContributions
+
             weeks {
               contributionDays {
                 date
@@ -202,7 +248,7 @@ def fetch() -> dict:
             "login": USER,
             "from": rolling_from.isoformat().replace("+00:00", "Z"),
             "to": now.isoformat().replace("+00:00", "Z"),
-        }
+        },
     )
 
     user = result.get("user")
@@ -235,8 +281,11 @@ def fetch() -> dict:
                 ) {
                   nodes {
                     stargazerCount
-                    primaryLanguage { name }
+                    primaryLanguage {
+                      name
+                    }
                   }
+
                   pageInfo {
                     hasNextPage
                     endCursor
@@ -246,7 +295,7 @@ def fetch() -> dict:
             }""",
             {
                 "login": USER,
-                "after": cursor
+                "after": cursor,
             },
         )["user"]["repositories"]
 
@@ -267,6 +316,7 @@ def fetch() -> dict:
         cursor = page["pageInfo"]["endCursor"]
 
     calendar = user["contributionsCollection"]["contributionCalendar"]
+
     today = now.date().isoformat()
 
     days = [
@@ -292,14 +342,16 @@ def fetch() -> dict:
 
 def mock() -> dict:
     """Deterministic fake data for local SVG layout checks only."""
+
     rng = random.Random(7)
+
     today = dt.date.today()
     start = today - dt.timedelta(days=30)
 
     days = [
         (
             (start + dt.timedelta(days=i)).isoformat(),
-            max(0, int(rng.gauss(6, 6)))
+            max(0, int(rng.gauss(6, 6))),
         )
         for i in range(31)
     ]
@@ -319,6 +371,7 @@ def mock() -> dict:
 
 
 def rank_of(value: int, thresholds: list[int]) -> tuple[int, float]:
+
     index = sum(
         1 for threshold in thresholds
         if value >= threshold
@@ -334,11 +387,12 @@ def rank_of(value: int, thresholds: list[int]) -> tuple[int, float]:
 
     return index, max(
         0.0,
-        min(1.0, (value - low) / (high - low))
+        min(1.0, (value - low) / (high - low)),
     )
 
 
 def cup(color: str) -> str:
+
     return (
         f'<path d="M-14 0 H14 V12 C14 24 8 30 0 30 C-8 30 -14 24 -14 12 Z" fill="{color}"/>'
         f'<path d="M-14 4 H-20 C-23 4 -22 15 -13 17" fill="none" stroke="{color}" stroke-width="3" stroke-linecap="round"/>'
@@ -350,9 +404,10 @@ def cup(color: str) -> str:
 
 
 def trophies_svg(data: dict) -> str:
+
     age = max(
         0,
-        dt.datetime.now(dt.timezone.utc).year - data["joined"]
+        dt.datetime.now(dt.timezone.utc).year - data["joined"],
     )
 
     items = [
@@ -360,60 +415,64 @@ def trophies_svg(data: dict) -> str:
             f"Joined {data['joined']}",
             age,
             f"{age} yr" + ("" if age == 1 else "s"),
-            [0, 1, 2, 3, 5, 7, 10, 15]
+            [0, 1, 2, 3, 5, 7, 10, 15],
         ),
         (
             "Followers",
             data["followers"],
             f"{data['followers']} followers",
-            [1, 5, 10, 25, 50, 100, 250, 500]
+            [1, 5, 10, 25, 50, 100, 250, 500],
         ),
         (
             "Contributions",
             data["contributions"],
             f"{data['contributions']} public / year",
-            [10, 100, 300, 600, 1000, 2000, 4000, 8000]
+            [10, 100, 300, 600, 1000, 2000, 4000, 8000],
         ),
         (
             "Commit Contributions",
             data["commits"],
             f"{data['commits']} public commit contrib.",
-            [10, 100, 300, 600, 1000, 2000, 4000, 8000]
+            [10, 100, 300, 600, 1000, 2000, 4000, 8000],
         ),
         (
             "Public Repos",
             data["public_repos"],
             f"{data['public_repos']} public repos",
-            [1, 5, 10, 20, 35, 50, 75, 100]
+            [1, 5, 10, 20, 35, 50, 75, 100],
         ),
         (
             "Public Forks",
             data["public_forks"],
             f"{data['public_forks']} public forks",
-            [1, 5, 10, 20, 35, 50, 75, 100]
+            [1, 5, 10, 20, 35, 50, 75, 100],
         ),
         (
             "Original Repos",
             data["public_original_repos"],
             f"{data['public_original_repos']} originals",
-            [1, 5, 10, 20, 35, 50, 75, 100]
+            [1, 5, 10, 20, 35, 50, 75, 100],
         ),
         (
             "Public Stars",
             data["stars"],
             f"{data['stars']} public stars",
-            [1, 5, 10, 30, 75, 150, 400, 1000]
+            [1, 5, 10, 30, 75, 150, 400, 1000],
         ),
         (
             "Languages",
             data["languages"],
             f"{data['languages']} languages",
-            [1, 2, 3, 5, 8, 12, 20, 30]
+            [1, 2, 3, 5, 8, 12, 20, 30],
         ),
     ]
 
     card_width, card_height, gap = 104, 150, 8
-    width = len(items) * card_width + (len(items) - 1) * gap
+
+    width = (
+        len(items) * card_width
+        + (len(items) - 1) * gap
+    )
 
     output = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{card_height}" viewBox="0 0 {width} {card_height}" role="img" '
@@ -421,6 +480,7 @@ def trophies_svg(data: dict) -> str:
     ]
 
     for index, (title, value, label, thresholds) in enumerate(items):
+
         rank_index, progress = rank_of(value, thresholds)
 
         color = (
@@ -455,9 +515,10 @@ def trophies_svg(data: dict) -> str:
 
 
 def nice_step(raw: float) -> int:
+
     for step in (
         1, 2, 5, 10, 20, 25, 50,
-        100, 200, 500, 1000
+        100, 200, 500, 1000,
     ):
         if step >= raw:
             return step
@@ -466,9 +527,11 @@ def nice_step(raw: float) -> int:
 
 
 def activity_svg(days: list[tuple[str, int]]) -> str:
+
     points = days[-31:]
 
     width, height = 780, 300
+
     left, right, top_margin, bottom = 60, 24, 60, 52
 
     plot_width = width - left - right
@@ -514,6 +577,7 @@ def activity_svg(days: list[tuple[str, int]]) -> str:
     ]
 
     for value in range(0, top + 1, step):
+
         y = baseline - value / top * plot_height
 
         output.append(
@@ -525,6 +589,7 @@ def activity_svg(days: list[tuple[str, int]]) -> str:
         )
 
     if points:
+
         line = " ".join(
             f"{x:.1f},{y:.1f}"
             for x, y in zip(xs, ys)
@@ -548,6 +613,7 @@ def activity_svg(days: list[tuple[str, int]]) -> str:
         )
 
         for (date, value), x, y in zip(points, xs, ys):
+
             output.append(
                 f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{LINE}"><title>{date}: {value} public contributions</title></circle>'
             )
@@ -557,6 +623,7 @@ def activity_svg(days: list[tuple[str, int]]) -> str:
             )
 
     else:
+
         output.append(
             f'<text x="{width / 2}" y="{baseline - 20}" text-anchor="middle" font-family="{FONT}" font-size="13" fill="{MUTED}">Run the profile-assets workflow to load public activity</text>'
         )
@@ -575,31 +642,33 @@ def activity_svg(days: list[tuple[str, int]]) -> str:
 
 
 def write_atomically(path: Path, content: str) -> None:
+
     path.parent.mkdir(parents=True, exist_ok=True)
 
     temporary = path.with_suffix(path.suffix + ".tmp")
 
     temporary.write_text(
         content,
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
     temporary.replace(path)
 
 
 def main() -> None:
+
     validate_identity()
 
     data = mock() if MOCK else fetch()
 
     write_atomically(
         OUT / "trophies.svg",
-        trophies_svg(data)
+        trophies_svg(data),
     )
 
     write_atomically(
         OUT / "activity-graph.svg",
-        activity_svg(data["days"])
+        activity_svg(data["days"]),
     )
 
     print(
@@ -608,14 +677,15 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+
     try:
         main()
 
     except (KeyError, TypeError, ValueError) as exc:
-        # Keep logs concise; do not print API payloads or environment values.
+
         print(
             f"Profile asset generation failed: invalid or incomplete public API data ({type(exc).__name__}).",
-            file=sys.stderr
+            file=sys.stderr,
         )
 
         raise SystemExit(1) from None
