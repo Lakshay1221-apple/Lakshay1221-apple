@@ -2,14 +2,14 @@
 #!/usr/bin/env python3
 """Generate public-only GitHub profile trophies and activity SVGs.
 
-Only public profile data is requested. Private repository metadata and private
-contributions are excluded at query time, not filtered after retrieval.
+Repository statistics are explicitly restricted to public repositories.
+Contribution data follows GitHub's GraphQL visibility rules.
 
 Environment:
-  GH_USER   GitHub username (defaults to the profile repository owner)
+  GH_USER   GitHub username (defaults to profile repository owner)
   GH_TOKEN  GitHub Actions token (GITHUB_TOKEN); no PAT is required
   OUT_DIR   Output directory (defaults to assets)
-  MOCK=1    Generate deterministic fake data for local SVG layout testing
+  MOCK=1    Generate deterministic fake data for local layout testing only
 """
 
 from __future__ import annotations
@@ -67,7 +67,7 @@ def validate_identity() -> None:
 
 
 def gql(query: str, variables: dict) -> dict:
-    """Call GitHub GraphQL without exposing credentials or API response data."""
+    """Call GitHub GraphQL without exposing credentials or response bodies."""
 
     body = json.dumps({
         "query": query,
@@ -104,8 +104,7 @@ def gql(query: str, variables: dict) -> dict:
             "GitHub GraphQL request failed (network, timeout, or invalid JSON)."
         ) from None
 
-    # IMPROVED ERROR HANDLING:
-    # Show the actual GraphQL error instead of hiding it.
+    # Display actual GraphQL errors without exposing tokens or API payloads.
     if payload.get("errors"):
         for error in payload["errors"]:
             message = error.get("message", "Unknown GraphQL error")
@@ -137,6 +136,7 @@ def gql(query: str, variables: dict) -> dict:
 def fetch() -> dict:
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
 
+    # Fetch account creation date.
     head_data = gql(
         "query($login:String!){ user(login:$login){ createdAt } }",
         {"login": USER},
@@ -153,7 +153,8 @@ def fetch() -> dict:
         user_head["createdAt"].replace("Z", "+00:00")
     )
 
-    # Exclude private contributions from yearly commit statistics.
+    # Fetch yearly commit contributions.
+    # Each calendar year is split into two ranges to keep query windows small.
     rolling_from = now - dt.timedelta(days=365)
 
     aliases = []
@@ -176,16 +177,19 @@ def fetch() -> dict:
         ]
 
         for start, end, half in half_year_ranges:
+
             if start > now:
                 continue
 
             end = min(end, now)
 
+            # FIX: contributionsCollection does not accept
+            # includePrivateContributions as an argument.
             aliases.append(
                 f'y{year}{half}: contributionsCollection('
                 f'from: "{start.isoformat().replace("+00:00", "Z")}", '
-                f'to: "{end.isoformat().replace("+00:00", "Z")}", '
-                'includePrivateContributions: false) { totalCommitContributions }'
+                f'to: "{end.isoformat().replace("+00:00", "Z")}"'
+                ') { totalCommitContributions }'
             )
 
     query = """
@@ -222,8 +226,7 @@ def fetch() -> dict:
 
         contributionsCollection(
           from: $from,
-          to: $to,
-          includePrivateContributions: false
+          to: $to
         ) {
           contributionCalendar {
             totalContributions
@@ -270,6 +273,7 @@ def fetch() -> dict:
     cursor = None
 
     while True:
+
         page = gql(
             """query($login:String!, $after:String) {
               user(login:$login) {
@@ -564,7 +568,7 @@ def activity_svg(days: list[tuple[str, int]]) -> str:
 
     output = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" '
-        f'aria-label="{escape(USER)} public GitHub activity graph, last 31 days"><title>{escape(USER)} public GitHub Activity Graph</title>',
+        f'aria-label="{escape(USER)} public GitHub activity graph, last 31 days"><title>{escape(USER)} Public GitHub Activity Graph</title>',
 
         '<defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">'
         f'<stop offset="0" stop-color="{LINE}" stop-opacity=".40"/>'
